@@ -5,6 +5,7 @@
   "license": "MIT",
   "authors": [],
   "require": {
+    "monolog/monolog": "^2.9",
     "guzzlehttp/guzzle": "^7.0"
   },
   "require-dev": {
