@@ -43,7 +43,7 @@ class Dispatch
             'registryValue' => $registryValue,
         ];
         $guzzle = new Client();
-        \think\facade\Log::info("执行器注册请求 url={$url} accessToken={$this->accessToken} body=" . json_encode($body));
+        Log::info("执行器注册请求 url={$url} accessToken={$this->accessToken} body=" . json_encode($body));
         $respStr = $guzzle->post($url, [
             RequestOptions::JSON => $body,
             RequestOptions::HEADERS => [
@@ -52,14 +52,14 @@ class Dispatch
         ])
             ->getBody()
             ->getContents();
-        \think\facade\Log::debug("执行器注册响应: {$respStr}");
+        Log::debug("执行器注册响应: {$respStr}");
        
         $response = Response::jsonUnserialize($respStr);
         if ($response->code == Response::SUCCESS_CODE) {
-            \think\facade\Log::info('执行器注册成功');
+            Log::info('执行器注册成功');
             return true;
         } else {
-            \think\facade\Log::error('执行器注册失败');
+            Log::error('执行器注册失败');
             return false;
         }
     }
@@ -72,7 +72,7 @@ class Dispatch
             'registryValue' => $registryValue,
         ];
         $guzzle = new Client();
-        \think\facade\Log::info("执行器取消注册请求 url={$url} accessToken={$this->accessToken} body=" . json_encode($body));
+        Log::info("执行器取消注册请求 url={$url} accessToken={$this->accessToken} body=" . json_encode($body));
         $respStr = $guzzle->post($url, [
             RequestOptions::JSON => $body,
             RequestOptions::HEADERS => [
@@ -81,14 +81,14 @@ class Dispatch
         ])
             ->getBody()
             ->getContents();
-        \think\facade\Log::debug("执行器取消注册响应: {$respStr}");
+        Log::debug("执行器取消注册响应: {$respStr}");
 
         $response = Response::jsonUnserialize($respStr);
         if ($response->code == Response::SUCCESS_CODE) {
-            \think\facade\Log::info('执行器取消注册成功');
+            Log::info('执行器取消注册成功');
             return true;
         } else {
-            \think\facade\Log::error('执行器取消注册失败');
+            Log::error('执行器取消注册失败');
             return false;
         }
     }
