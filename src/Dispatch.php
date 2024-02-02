@@ -103,7 +103,7 @@ class Dispatch
             'handleMsg' => $handleMsg,
         ]];
         $guzzle = new Client();
-        Log::info("任务回调 url={$url} accessToken={$this->accessToken} body=" . json_encode($body));
+        \think\facade\Log::info("任务回调 url={$url} accessToken={$this->accessToken} body=" . json_encode($body));
         $respStr = $guzzle->post($url, [
             RequestOptions::JSON => $body,
             RequestOptions::HEADERS => [
@@ -112,14 +112,14 @@ class Dispatch
         ])
             ->getBody()
             ->getContents();
-        Log::debug("任务回调: {$respStr}");
+        \think\facade\Log::debug("任务回调: {$respStr}");
 
         $response = Response::jsonUnserialize($respStr);
         if ($response->code == Response::SUCCESS_CODE) {
-            Log::info('任务回调成功');
+            \think\facade\Log::info('任务回调成功');
             return true;
         } else {
-            Log::error('任务回调失败');
+            \think\facade\Log::error('任务回调失败');
             return false;
         }
     }
