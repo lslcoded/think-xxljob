@@ -96,12 +96,12 @@ class Dispatch
 
     public function callback(string $logId,string $logDateTim,int $handleCode = 200,string $handleMsg = ''){
         $url = "{$this->server}/api/callback";
-        $body = [
+        $body = [[
             'logId' => $logId,
             'logDateTim' => $logDateTim ? intval($logDateTim) : 0,
             'handleCode' => $handleCode,
             'handleMsg' => $handleMsg,
-        ];
+        ]];
         $guzzle = new Client();
         Log::info("任务回调 url={$url} accessToken={$this->accessToken} body=" . json_encode($body));
         $respStr = $guzzle->post($url, [
