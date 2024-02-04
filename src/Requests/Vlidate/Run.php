@@ -7,10 +7,10 @@ use think\Validate;
 class Run extends  Validate
 {
     protected $rule = [
-        'jobId' => 'require|number',
+        'jobId' => 'require',
         'executorHandler' =>'require',
         'executorTimeout' => 'number',
-        'logId' =>'number',
+        'logId' =>'require',
         'logDateTime' => 'number',
         'glueUpdatetime' => 'number',
         'broadcastIndex' => 'number',
