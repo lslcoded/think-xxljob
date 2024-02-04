@@ -7,7 +7,7 @@ use think\Validate;
 class Log extends  Validate
 {
     protected $rule = [
-            'logId' => 'required|number',
+            'logId' => 'require',
             'logDateTim' => 'number',
             'fromLineNum' =>'number',
         ];
